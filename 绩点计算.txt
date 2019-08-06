@@ -1,0 +1,97 @@
+#include<iostream>
+#include<string>
+#include<list>using namespace std;
+list<string> Name;
+list<double> Score;
+list<double> Credit;
+void calculate1()
+{	
+double zongfen=0;	
+double zongxuefen=0;	
+double a,b;	
+double jidian;	
+list<double>::iterator i2=Score.begin();	
+list<double>::iterator i3=Credit.begin();	
+for(i2;i2!=Score.end();i2++)	
+{		
+b=*i2;		
+a=*i3;		
+if(a>=60)		
+{				
+zongfen=(a-50)/10*b+zongfen;		
+}		
+else		
+{			
+zongfen=zongfen;		
+}		
+zongxuefen=b+zongxuefen;		
+i3++;	
+	
+jidian=zongfen/zongxuefen;	
+cout<<"你的当前绩点为："<<jidian;
+}
+void input()
+{	
+string s;	
+double score;	
+double credit;	
+cout<<"请输入你的课程名："<<endl;	
+cin>>s;	
+cout<<"请输入这门课程的学分"<<endl;	
+cin>>score;	
+cout<<"请输入这门课程的最终分数"<<endl;	
+cin>>credit;	
+Name.push_back(s);	Score.push_back(score);	
+Credit.push_back(credit);}void show(){	
+list<string>::iterator it1=Name.begin();	
+list<double>::iterator it2=Score.begin();	
+list<double>::iterator it3=Credit.begin();	
+for(it1;it1!=Name.end();it1++)	
+{		
+cout<<"科目："<<*it1<<"   学分："<<*it2<<"   分数："<<*it3<<endl;		
+it2++;		
+it3++;	
+}
+}
+void calculate(){	
+double zongfen=0;	
+double zongxuefen=0;	
+double a,b;	
+double jidian;	
+list<double>::iterator i2=Score.begin();	
+list<double>::iterator i3=Credit.begin();	
+for(i2;i2!=Score.end();i2++)	
+{		
+b=*i2;		
+a=*i3;		
+if(a>=60)		
+{				
+zongfen=(a-50)/10*b+zongfen;		
+}		
+else		
+{			
+zongfen=zongfen;		
+}		
+zongxuefen=b+zongxuefen;		
+i3++;	}	
+jidian=zongfen/zongxuefen;	
+if(jidian>=2.5)		
+cout<<"恭喜！"<<endl<<"你的绩点为："<<jidian<<endl;	
+else		
+cout<<"好凄凉！"<<endl<<"你的绩点为："<<jidian<<endl;}int main()
+{	
+system("color 70");	int n;	
+cout<<"请输入总共有几门课程：";	cin>>n;	system("cls");	
+for(int i=1;i<=n;i++)	{		
+if(i>=2)		
+{				
+calculate1();		
+}		
+else			
+cout<<"你的当前绩点为：0。";		
+cout<<"   正在输入第"<<i<<"门课，还有"<<n-i<<"门课需要输入。"<<endl<<"（其中优秀95分，良好85，中等75，及格65，不及格0分）"<<endl;		
+input();		
+system("cls");	
+}	
+show();	cout<<endl;	
+calculate();}
